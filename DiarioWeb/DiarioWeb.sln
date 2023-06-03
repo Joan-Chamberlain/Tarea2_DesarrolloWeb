@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiarioWeb", "DiarioWeb.csproj", "{F838CE65-5F0B-4E1B-8103-A76B8EF36A82}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F838CE65-5F0B-4E1B-8103-A76B8EF36A82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F838CE65-5F0B-4E1B-8103-A76B8EF36A82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F838CE65-5F0B-4E1B-8103-A76B8EF36A82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F838CE65-5F0B-4E1B-8103-A76B8EF36A82}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9387E1E9-C412-4B6A-9C92-DD8C899E8E3C}
+	EndGlobalSection
+EndGlobal

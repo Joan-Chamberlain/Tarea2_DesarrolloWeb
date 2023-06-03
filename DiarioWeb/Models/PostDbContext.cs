@@ -1,10 +1,16 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace DiarioWeb.Models
 {
-  public class PostDbContext : DbContext
+  public partial class PostDbContext : IdentityDbContext<ApplicationUser>
   {
+    public PostDbContext()
+    {
+
+    }
+
     public PostDbContext(DbContextOptions<PostDbContext> options) : base(options)
     {
     }

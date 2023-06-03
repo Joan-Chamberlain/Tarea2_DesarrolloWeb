@@ -9,7 +9,7 @@
     public string Encabezado { get; set; }
     public string AuthorId { get; set; } // Foreign key
 
-    //public ApplicationUser Author { get; set; } // Relación con el autor
+    public ApplicationUser Author { get; set; } // Relación con el autor
     public ICollection<Comment> Comments { get; set; } // Relación con los comentarios
   }
 }

@@ -6,13 +6,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages();
 builder.Services.AddDbContext<PostDbContext>(options =>
 {
   options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 
 });
 
-builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddEntityFrameworkStores<PostDbContext>();
 
 
@@ -36,6 +37,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}" ,
+    app.MapRazorPages());
 
 app.Run();

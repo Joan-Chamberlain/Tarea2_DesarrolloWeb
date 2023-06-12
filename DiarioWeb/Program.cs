@@ -13,7 +13,13 @@ builder.Services.AddDbContext<PostDbContext>(options =>
 
 });
 
-builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
+builder.Services.AddDefaultIdentity<ApplicationUser>(options => {
+  options.SignIn.RequireConfirmedAccount = false;
+  options.Password.RequireNonAlphanumeric = false;
+  options.Password.RequiredLength = 1;
+  options.Password.RequireLowercase= false;
+  options.Password.RequireUppercase = false;
+})
     .AddEntityFrameworkStores<PostDbContext>();
 
 

@@ -93,7 +93,7 @@ namespace DiarioWeb.Areas.Identity.Pages.Account
             /// </summary>
             [Required]
             [EmailAddress]
-            [Display(Name = "Email")]
+            [Display(Name = "Correo electrónico")]
             public string Email { get; set; }
 
             /// <summary>

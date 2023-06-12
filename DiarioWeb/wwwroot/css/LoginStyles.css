@@ -1,0 +1,61 @@
+﻿h1 {
+  margin-top: 50px;
+}
+
+.login-section {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.form-floating {
+  margin-bottom: 20px;
+}
+
+.form-check-label {
+  font-weight: normal;
+}
+
+#login-submit {
+  margin-top: 20px;
+}
+
+.external-login-section {
+  margin-top: 50px;
+}
+
+/* Estilos de Bootstrap */
+
+body {
+  background-color: #f8f9fa;
+}
+
+.row.justify-content-center {
+  margin-top: 50px;
+}
+
+.btn-outline-dark {
+  color: #343a40;
+  border-color: #343a40;
+}
+
+  .btn-outline-dark:hover {
+    color: #fff;
+    background-color: #343a40;
+    border-color: #343a40;
+  }
+
+.text-center {
+  text-align: center;
+}
+
+.text-danger {
+  color: #dc3545;
+}
+
+.form-label {
+  margin-top: -4px;
+  margin-left: 5px;
+  font-size: 12px;
+  color: #6c757d;
+}

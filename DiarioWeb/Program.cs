@@ -1,6 +1,7 @@
 using DiarioWeb.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication.Google;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,13 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => {
   options.Password.RequireUppercase = false;
 })
     .AddEntityFrameworkStores<PostDbContext>();
+
+builder.Services.AddAuthentication()
+  .AddGoogle(googleOptions =>
+    {
+      googleOptions.ClientId = builder.Configuration["Authentication:Google:ClientId"];
+      googleOptions.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
+    });
 
 
 var app = builder.Build();

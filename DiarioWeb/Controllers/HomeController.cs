@@ -1,9 +1,12 @@
 ﻿using DiarioWeb.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace DiarioWeb.Controllers
 {
+
+  [Authorize(Roles = "Admin")]
   public class HomeController : Controller
   {
     private readonly ILogger<HomeController> _logger;
@@ -27,6 +30,12 @@ namespace DiarioWeb.Controllers
     public IActionResult Error()
     {
       return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+    }
+
+    public async Task<IActionResult> Test()
+    {
+
+      return View();
     }
   }
 }

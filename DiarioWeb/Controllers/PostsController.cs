@@ -3,6 +3,7 @@ using DiarioWeb.Models.ViewModels;
 using DiarioWeb.Utility;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace DiarioWeb.Controllers
 {
@@ -19,11 +20,14 @@ namespace DiarioWeb.Controllers
     }
 
     [HttpGet]
-    public async Task<IActionResult> ViewPost(int Id)
+    public async Task<IActionResult> ViewPost() // int Id
     {
-      var post = _context.Posts.Where(b=>b.Id == Id).FirstOrDefault();
+      var post = _context.Posts.Where(b=>b.Id == 1003).FirstOrDefault();
+
+      var author = _context.Users.Where(b=>b.Id == post.AuthorId).FirstOrDefault();
 
       ViewBag.Post = post;
+      ViewBag.Author = author;
 
       return View();
     }

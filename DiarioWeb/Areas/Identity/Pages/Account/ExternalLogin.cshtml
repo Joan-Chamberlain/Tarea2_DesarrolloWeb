@@ -28,24 +28,6 @@
         <span asp-validation-for="Input.LastName" class="text-danger"></span>
       </div>
 
-      <p>¿Para qué usarás este blog?</p>
-
-      <div class="mb-3">
-        <div class="form-check">
-            <input class="form-check-input" asp-for="Input.BlogUsage" type="radio" id="writer" value="Author" required>
-            <label class="form-check-label" for="writer">
-                Escritor: Quiero escribir posts de distintos temas y aportar a la comunidad
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" asp-for="Input.BlogUsage" type="radio" id="reader" value="Reader" required>
-            <label class="form-check-label" for="reader">
-                Lector: Solo quiero leer los posts hechos por otros usuarios
-            </label>
-        </div>
-        <span asp-validation-for="Input.BlogUsage" class="text-danger"></span>
-      </div>  
-
       <button type="submit" class="w-100 btn btn-primary">Register</button>
     </form>
   </div>

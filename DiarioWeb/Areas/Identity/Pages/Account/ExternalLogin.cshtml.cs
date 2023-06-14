@@ -96,9 +96,6 @@ namespace DiarioWeb.Areas.Identity.Pages.Account
             [Display(Name = "Nombre")]
             public string LastName { get; set; }
 
-            [Required]
-            [Display(Name = "Uso del blog")]
-            public BlogUsage BlogUsage { get; set; }
         }
 
         public enum BlogUsage
@@ -183,7 +180,7 @@ namespace DiarioWeb.Areas.Identity.Pages.Account
 
                 var result = await _userManager.CreateAsync(user);
 
-                await _userManager.AddToRoleAsync(user, Input.BlogUsage.ToString());
+                await _userManager.AddToRoleAsync(user, "Member");
 
                 if (result.Succeeded)
                 {

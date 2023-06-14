@@ -11,7 +11,22 @@
   <body>
     <h1 class="text-center">@post.Titulo</h1>
 
-    <img src="data:image/png;base64,@Convert.ToBase64String(post.Imagen)" alt="Imagen" />
-    
+    <div style="display: flex; justify-content: center;">
+      <div class="ratio" style="width: 40vw; height: 22vw; display: flex; justify-content: center; align-items: center;">
+        <img src="data:image/png;base64,@Convert.ToBase64String(post.Imagen)" alt="Imagen" class="img-fluid" style="object-fit: cover; width: 100%; height: 100%;" />
+      </div>
+    </div>
+
+    <div style="display: flex; justify-content: center;">
+      <div class="ms-3 justify-content-center">
+        <p class="m-0 small">Fecha de publicación: @post.Fecha</p>
+        <p class="m-0 small">Autor: @ViewBag.Author.FirstName @ViewBag.Author.LastName</p>
+      </div>
+    </div>
+
+    <p style="text-align: justify;">
+      @post.Texto
+    </p>
+
   </body>
 </html>

@@ -1,4 +1,7 @@
-﻿
+﻿@{
+  Layout = "/Views/Shared/_BlogLayout.cshtml";
+  var post = ViewBag.Post;
+}
 
 <html>
   <head>
@@ -6,6 +9,9 @@
   </head>
 
   <body>
+    <h1 class="text-center">@post.Titulo</h1>
 
+    <img src="data:image/png;base64,@Convert.ToBase64String(post.Imagen)" alt="Imagen" />
+    
   </body>
 </html>

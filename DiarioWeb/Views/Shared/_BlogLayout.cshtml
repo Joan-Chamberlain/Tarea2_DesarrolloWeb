@@ -1,0 +1,27 @@
+﻿@{
+  Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+</head>
+<body>
+  <div class="container">
+    <div class="row border-bottom pb-3">
+        <div class="col text-center">
+            <h1>Diario Web de Joan y Adrián</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-10 border-end pe-3">
+        @RenderBody()
+        </div>
+        <div class="col-2">
+            Aquí va lo suyo Adrián, esto está en el archivo Views/Shared/_BlogLayout.cshtml
+        </div>
+    </div>
+</div>
+</body>
+</html>

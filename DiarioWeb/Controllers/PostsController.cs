@@ -19,6 +19,16 @@ namespace DiarioWeb.Controllers
     }
 
     [HttpGet]
+    public async Task<IActionResult> ViewPost(int Id)
+    {
+      var post = _context.Posts.Where(b=>b.Id == Id).FirstOrDefault();
+
+      ViewBag.Post = post;
+
+      return View();
+    }
+
+    [HttpGet]
     public async Task<IActionResult> CreatePost()
     {
       CategoryManager categoryManager = new CategoryManager();

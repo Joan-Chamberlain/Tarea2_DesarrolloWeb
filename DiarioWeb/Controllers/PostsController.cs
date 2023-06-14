@@ -4,6 +4,7 @@ using DiarioWeb.Utility;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Metadata;
 
 namespace DiarioWeb.Controllers
 {
@@ -20,9 +21,9 @@ namespace DiarioWeb.Controllers
     }
 
     [HttpGet]
-    public async Task<IActionResult> ViewPost() // int Id
+    public async Task<IActionResult> ViewPost(int Id)
     {
-      var post = _context.Posts.Where(b=>b.Id == 1003).FirstOrDefault();
+      var post = _context.Posts.Where(b=>b.Id == Id).FirstOrDefault();
 
       var author = _context.Users.Where(b=>b.Id == post.AuthorId).FirstOrDefault();
 
@@ -62,7 +63,7 @@ namespace DiarioWeb.Controllers
         {
           Fecha = DateTime.Now,
           Titulo = model.Titulo,
-          Texto = model.Texto,
+          Texto = model.Texto?.Replace("\r\n", "<br>"),
           Imagen = imagenBytes,
           Categoría = model.Categoria,
           AuthorId = userID
@@ -71,8 +72,18 @@ namespace DiarioWeb.Controllers
         _context.Add(post);
         await _context.SaveChangesAsync();
 
+        var Id = _context.Posts.Where(b => b.Fecha == post.Fecha && b.AuthorId == userID).FirstOrDefault().Id;
+
+        return RedirectToAction("ViewPost", new { Id = Id });
       }
+
+      CategoryManager categoryManager = new CategoryManager();
+      List<string> categorias = categoryManager.ObtenerCategorias();
+
+      ViewData["Categorías"] = categorias;
+
       return View();
+
     }
   }
 }

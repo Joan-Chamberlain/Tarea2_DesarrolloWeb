@@ -1,5 +1,6 @@
 ﻿using DiarioWeb.Models;
 using DiarioWeb.Models.ViewModels;
+using DiarioWeb.Utility;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,7 +21,11 @@ namespace DiarioWeb.Controllers
     [HttpGet]
     public async Task<IActionResult> CreatePost()
     {
-      
+      CategoryManager categoryManager = new CategoryManager();
+      List<string> categorias = categoryManager.ObtenerCategorias();
+
+      ViewData["Categorías"] = categorias;
+
       return View();
     }
 

@@ -21,10 +21,16 @@
       <span asp-validation-for="Titulo" class="text-danger "></span>
     </div>
 
-    <div class="form-group">
-      <label> Categoría del post </label>
-      <input asp-for="Categoria" class="form-control" />
-      <span asp-validation-for="Categoria" class="text-danger "></span>
+    <div class="form-group mt-2">
+      <label>Categoría del post</label>
+      <select asp-for="Categoria" class="form-control">
+        <option value="">Seleccione una categoría</option>
+        @foreach (var categoria in ViewData["Categorías"] as List<string>)
+        {
+          <option value="@categoria">@categoria</option>
+        }
+      </select>
+      <span asp-validation-for="Categoria" class="text-danger"></span>
     </div>
 
     <div class="form-group">
@@ -35,7 +41,7 @@
 
     <div class="form-group">
       <label for="Imagen">Imagen para el post:</label><br />
-      <input asp-for="Imagen" type="file" class="my-3">
+      <input asp-for="Imagen" type="file" class="my-3" accept="image/jpeg, image/png">
     </div>
 
     <div>

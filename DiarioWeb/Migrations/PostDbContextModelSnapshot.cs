@@ -132,14 +132,18 @@ namespace DiarioWeb.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Encabezado")
+                    b.Property<string>("Categoría")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Imagen")
+                    b.Property<byte[]>("Imagen")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Texto")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

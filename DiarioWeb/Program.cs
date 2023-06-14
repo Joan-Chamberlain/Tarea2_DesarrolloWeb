@@ -21,7 +21,8 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => {
   options.Password.RequireLowercase= false;
   options.Password.RequireUppercase = false;
 })
-    .AddEntityFrameworkStores<PostDbContext>();
+  .AddRoles<IdentityRole>()
+  .AddEntityFrameworkStores<PostDbContext>();
 
 builder.Services.AddAuthentication()
   .AddGoogle(googleOptions =>
@@ -53,5 +54,42 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}" ,
     app.MapRazorPages());
+
+using (var scope = app.Services.CreateScope())
+{
+  var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+  var roles = new[] { "Admin", "Author" };
+
+  foreach (var role in roles)
+  {
+    if (!await roleManager.RoleExistsAsync(role))
+    {
+      await roleManager.CreateAsync(new IdentityRole(role));
+    }
+  }
+}
+
+using (var scope = app.Services.CreateScope())
+{
+  var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+
+  var email = "admin@admin.com";
+  var password = "123123";
+
+  if (await userManager.FindByEmailAsync(email) == null)
+  {
+    var user = new ApplicationUser();
+    user.Email = email;
+    user.UserName = email;
+    user.FirstName = "Admin";
+    user.LastName = "Admin";
+    user.EmailConfirmed= true;
+
+    await userManager.CreateAsync(user, password);
+
+    await userManager.AddToRoleAsync(user, "Admin");
+  }
+}
 
 app.Run();

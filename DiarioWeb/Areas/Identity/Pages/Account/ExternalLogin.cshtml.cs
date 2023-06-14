@@ -95,9 +95,19 @@ namespace DiarioWeb.Areas.Identity.Pages.Account
             [DataType(DataType.Text)]
             [Display(Name = "Nombre")]
             public string LastName { get; set; }
+
+            [Required]
+            [Display(Name = "Uso del blog")]
+            public BlogUsage BlogUsage { get; set; }
         }
-        
-        public IActionResult OnGet() => RedirectToPage("./Login");
+
+        public enum BlogUsage
+        {
+          Author,
+          Reader
+        }
+
+    public IActionResult OnGet() => RedirectToPage("./Login");
 
         public IActionResult OnPost(string provider, string returnUrl = null)
         {
@@ -172,6 +182,9 @@ namespace DiarioWeb.Areas.Identity.Pages.Account
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
 
                 var result = await _userManager.CreateAsync(user);
+
+                await _userManager.AddToRoleAsync(user, Input.BlogUsage.ToString());
+
                 if (result.Succeeded)
                 {
                     result = await _userManager.AddLoginAsync(user, info);

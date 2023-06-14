@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DiarioWeb.Migrations
 {
     [DbContext(typeof(PostDbContext))]
-    [Migration("20230612035733_Users")]
-    partial class Users
+    [Migration("20230614045700_Prueba")]
+    partial class Prueba
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -135,14 +135,18 @@ namespace DiarioWeb.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("Encabezado")
+                    b.Property<string>("Categoría")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Imagen")
+                    b.Property<byte[]>("Imagen")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Texto")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

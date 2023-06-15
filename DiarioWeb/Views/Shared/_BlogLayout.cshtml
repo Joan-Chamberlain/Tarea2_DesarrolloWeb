@@ -29,35 +29,9 @@
         </div>
         <div class="col-2">
                 <h2>Autores</h2>
-                <ul>
-                    @foreach (var user in Model)
-                    {
-                        <li><a href="@Url.Action("PostsByAuthor", "Posts", new { author = user.Id })">@user.FirstName</a></li>
-                    }
-                </ul>
                 <br/>
                 <h2>Categorias :</h2>
-                <ul>
-                    @foreach (var item in ViewData)
-                    {
-                        <li>
-                            @item.Key:
-                            @if (item.Value is List<string> stringList)
-                            {
-                                <ul>
-                                    @foreach (var value in stringList)
-                                    {
-                                        <li><a href="@Url.Action("PostsByCategorie", "Posts", new { categorie = value })">@value<a/></li>
-                                    }
-                                </ul>  
-                            }
-                            else
-                            {
-                                @item.Value
-                            }
-                        </li>
-                    }
-                </ul>
+                
         </div>
       </div>
     </div>

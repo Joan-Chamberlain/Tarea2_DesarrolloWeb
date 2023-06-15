@@ -131,5 +131,16 @@ namespace DiarioWeb.Controllers
             return View(posts);
         }
 
-  }
+        public IActionResult ViewPost(int id)
+        {
+            var post = _context.Posts.Include(p => p.Author).FirstOrDefault(p => p.Id == id);
+
+            if (post == null)
+            {
+                return NotFound();
+            }
+
+            return View(post);
+        }
+    }
 }

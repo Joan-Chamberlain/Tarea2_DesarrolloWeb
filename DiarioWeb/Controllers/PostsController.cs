@@ -85,5 +85,39 @@ namespace DiarioWeb.Controllers
       return View();
 
     }
+
+            [HttpGet]
+        public async Task<IActionResult> PostsByAuthor(string author)
+        {
+            var user =  _context.Users.Where(b => b.Id == author).FirstOrDefault();
+
+            //var user = await _userManager.FindByNameAsync(author);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var posts = await _context.Posts
+                .Include(p => p.Author) // Include the Author navigation property
+                //.Include(p => p.Comments) // Include the Comments navigation property
+                .Where(p => p.AuthorId == user.Id)
+                .ToListAsync();
+
+            return View(posts);
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> PostsByCategorie(string categorie)
+        {
+ 
+            var posts = await _context.Posts
+                 .Include(p => p.Author)
+                .Where(p => p.Categoría == categorie)
+                .ToListAsync();
+
+            return View(posts);
+        }
   }
 }

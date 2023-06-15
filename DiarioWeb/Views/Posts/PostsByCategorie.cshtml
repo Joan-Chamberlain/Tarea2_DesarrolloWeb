@@ -1,0 +1,60 @@
+﻿@model IEnumerable<DiarioWeb.Models.Post>
+
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div class="container">
+        <div class="row border-bottom pb-3">
+            <div class="col text-center">
+                <h1>Diario Web de Joan y Adrián</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-10 border-end pe-3">
+                @foreach (var post in Model)
+                {
+                    <article class="blog-post">
+                        <h3>@post.Titulo <small>@post.Fecha.ToString("dd/MM/yyyy")</small></h3>
+                        <img class="thumbnail" src="data:image/png;base64,@Convert.ToBase64String(post.Imagen)">
+                        <p>
+                            @post.Texto
+                        </p>
+                        <div class="callout">
+                            <ul class="menu simple">
+                                <li><a href="#">Autor: @post.Author.FirstName @post.Author.LastName</a></li>
+                                <li><a href="#">Comentarios: Comments.Count</a></li>
+                            </ul>
+                        </div>
+                    </article>
+                }
+            </div>
+            <div class="col-2">
+                <h2>Autores</h2>
+                <ul>
+                    @foreach (var post in Model)
+                    {
+                        <li><a href="#">@post.Author.FirstName</a></li>
+                    }
+                </ul>
+                <br />
+                <h2>Categorías :</h2>
+                <ul>
+                    @foreach (var post in Model)
+                    {
+                        <li>
+                            @post.Categoría
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

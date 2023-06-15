@@ -22,9 +22,11 @@ namespace DiarioWeb.Controllers
     }
 
     public IActionResult Index()
-    {
-      return View();
-    }
+        {
+            var users = _context.Users.ToList();
+            return View(users);
+
+        }
 
     [Authorize(Roles = "Admin")]
     public async Task<IActionResult> AdminView()
@@ -121,6 +123,13 @@ namespace DiarioWeb.Controllers
 
       return View(user);
     }
+
+    public IActionResult DisplayPosts()
+        {
+            var posts = _context.Posts.Include(p => p.Author).ToList(); // Retrieve all posts from the database
+
+            return View(posts);
+        }
 
   }
 }

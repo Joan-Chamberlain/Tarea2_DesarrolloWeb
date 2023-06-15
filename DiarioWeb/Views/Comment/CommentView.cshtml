@@ -1,0 +1,47 @@
+﻿@{
+  Layout = "/Views/Shared/_BlogLayout.cshtml";
+
+  var comments = ViewData["comments"] as List<Comment>;
+}
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+  </head>
+
+  <body>
+    <form asp-controller="Posts" asp-action="ViewPost" method="get">
+      <input type="hidden" name="Id" value="@ViewBag.ID"/>
+      <button type="submit" class="btn btn-info">Volver al post</button>
+    </form>
+    <h1> Comentarios </h1>
+
+    <div>
+      <h2>Añadir un comentario:</h2>
+      <form asp-action="CommentView" method="post"  class="form-group">
+        <input type="hidden" value="@ViewBag.ID" name="Id"/>
+        <textarea name="commentText" class="form-control" rows="4" required style="resize: none;"></textarea>
+        <br />
+        <button type="submit">Enviar comentario</button>
+      </form>
+      <br />
+      <br />
+    </div>
+
+  @if (comments != null) {
+    @foreach (var comment in comments)
+    {
+        <div>
+          <p>Fecha de publicación: @comment.Fecha</p>
+          <p style="text-align: justify;">@comment.Contenido</p>
+        </div>
+        <br />
+    }
+  } 
+  else
+  {
+    <h3>No hay comentarios</h3>
+  }
+</body>
+
+</html>

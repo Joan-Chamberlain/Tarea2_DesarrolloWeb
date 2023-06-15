@@ -28,5 +28,10 @@
       @Html.Raw(post.Texto)
     </p>
 
+    <form asp-controller="Comment" asp-action="CommentView" method="get">
+      <input type="hidden" name="Id" value="@post.Id"/>
+      <button type="submit" class="btn btn-info">Ver comentarios del post</button>
+    </form>
+
   </body>
 </html>

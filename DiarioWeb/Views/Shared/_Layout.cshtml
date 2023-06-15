@@ -13,11 +13,12 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">DiarioWeb</a>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <partial name="_LoginPartial.cshtml" />
-                </div>
                 <a class="navbar-brand" asp-area="" asp-controller="Posts" asp-action="CreatePost">Crear Post</a>
                 <a class="navbar-brand" asp-area="" asp-controller="Posts" asp-action="ViewPost">Ver Post</a>
+                <div class="ms-auto">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="AdminView">Administrar</a>
+                    <partial name="_LoginPartial.cshtml" />
+                </div>
             </div>
         </nav>
     </header>

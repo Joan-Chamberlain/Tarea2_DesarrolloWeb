@@ -1,5 +1,12 @@
 ﻿@{
   Layout = "/Views/Shared/_Layout.cshtml";
+
+    var categoryManager = new DiarioWeb.Utility.CategoryManager();
+
+    var categorias = categoryManager.ObtenerCategorias();
+
+    ViewData["Categorias"] = categorias;
+
 }
 
 <!DOCTYPE html>
@@ -21,7 +28,10 @@
           @RenderBody()
         </div>
         <div class="col-2">
-            Aquí va lo suyo Adrián, esto está en el archivo Views/Shared/_BlogLayout.cshtml
+                <h2>Autores</h2>
+                <br/>
+                <h2>Categorias :</h2>
+                
         </div>
       </div>
     </div>

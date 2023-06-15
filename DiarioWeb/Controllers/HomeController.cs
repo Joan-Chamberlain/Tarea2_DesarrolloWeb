@@ -26,6 +26,7 @@ namespace DiarioWeb.Controllers
       return View();
     }
 
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> AdminView()
     {
       var users = await _context.Users.ToListAsync();
